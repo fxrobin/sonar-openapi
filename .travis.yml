@@ -1,26 +1,2 @@
 language: java
 jdk: openjdk8
-
-
-before_cache:
-  # remove all the artifacts that are installed in local repo because of mvn deploy
-  - rm -rf $HOME/.m2/repository/com.socientegenerale.sonar.openapi
-  - find $HOME/.m2 -name resolver-status.properties -exec rm {} \;
-
-# to keep Maven local repository between builds:
-cache:
-  directories:
-    - '$HOME/.m2/repository'
-    - '$HOME/.sonar'
-    - '$HOME/jvmr'
-    - '$HOME/maven'
-
-notifications:
-  email: false
-
-addons:
-  sonarcloud:
-    organization: "societe-generale"
-
-script: 
-  - ./travis.sh
